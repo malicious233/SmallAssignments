@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <map>
+#include <vector>
 
 using namespace std;
 
@@ -88,10 +90,37 @@ void reverseString(string& str)
     }
 }
 
+//Counts and prints unique occurences of a letter in a given string (It does not count upper and lower case)
+void occurencesOfCharacters(const string& str)
+{
+    int n = str.length();
+    std::map<char, int> chars;
+    
+    //Emplace or increment amount in map by iterating through string
+    for (int i = 0; i < n; i++)
+    {
+        if (chars.count(str[i]))
+        {
+            chars[str[i]]++;
+        }
+        else
+        {
+            chars.emplace(str[i], 1);
+        }
+    }
+
+    for (auto const& x : chars )
+    {
+        std::cout << x.first << ":" << x.second << std::endl;
+    }
+
+    
+}
+
 int main()
 {
 
-    
+    /*
     int valoo1 = 6;
     int valoo2 = 3;
 
@@ -104,10 +133,14 @@ int main()
 
     string str = "Greetings!";
     reverseString(str);
-
+    
     cout << str << endl;
+    */
     //cout << evenOrOdd(10) << endl;
     //cout << charrArray << endl;
+
+    string str2 = "Helliiio";
+    occurencesOfCharacters(str2);
     
 
 
